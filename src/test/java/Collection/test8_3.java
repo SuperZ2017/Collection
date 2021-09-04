@@ -96,6 +96,54 @@ public class test8_3 {
     }
 
 
+    /**
+     * map remove(k, v) 方法
+     * 根据 k、v 来移除，必须 k，v 都对应才会移除
+     */
+    @Test
+    public void remove() {
+        map.remove("c", 4);
+        System.out.println(map);
+    }
+
+    /**
+     * map replaceAll() 方法
+     * 通过 BiFunction 替换 map 中每个项的值
+     */
+    @Test
+    public void replaceAll() {
+        map.replaceAll((k, v) -> v * 10);
+        System.out.println(map);
+    }
+
+
+    /**
+     * map replace() 方法
+     */
+    @Test
+    public void replace() {
+        map.replace("c", 3, 5);
+        System.out.println(map);
+    }
+
+
+    /**
+     * map merge() 方法
+     */
+    @Test
+    public void merge() {
+        Map<String, Integer> map1 = Map.of("a", 1, "b", 2, "c", 3);
+        Map<String, Integer> map2 = Map.of("a", 11, "d", 12, "f", 14);
+
+        HashMap<String, Integer> map3 = new HashMap<>(map1);
+        map2.forEach((k, v) ->
+                map3.merge(k, v, (v1, v2) -> v1 + v2));
+
+        System.out.println(map3);
+
+    }
+
+
     @After
     public void destroy() {
         System.gc();
